@@ -8,7 +8,7 @@ on:
     inputs:
       workflowAction:
         description: 'Action'
-        default: 'Run MicroK8s + kube-becnh'
+        default: 'Run MicroK8s + kube-bench'
         required: true
  
 jobs:
