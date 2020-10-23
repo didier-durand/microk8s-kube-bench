@@ -42,4 +42,4 @@ jobs:
         git diff --quiet && git diff --staged --quiet || git commit -m "changes committed back by actor $GITHUB_ACTOR on $HELMALYZER_TIMESTAMP (workflow: $GITHUB_WORKFLOW - job: $GITHUB_JOB - sha: $GITHUB_SHA - ref: $GITHUB_REF)"
         git config pull.rebase false
         git diff --quiet && git diff --staged --quiet || git pull
-        git push https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/didier-durand/metak8s-PRIVATE 
+        git push https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/didier-durand/microk8s-kube-bench
