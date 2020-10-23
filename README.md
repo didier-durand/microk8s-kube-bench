@@ -4,7 +4,7 @@
 
 ## Goal & Deliverables
 
-![workflow badge](https://github.com/didier-durand/microk8s-kube-bench/workflows/MicroK8s%20Kube-bench/badge.svg)
+![workflow badge](https://github.com/didier-durand/microk8s-kube-bench/workflows/MicroK8s%20kube-bench/badge.svg)
 
 MicroK8s analysed for CIS benchmark with kube-bench. 
 
@@ -53,7 +53,7 @@ If you want to reuse this repository, just fork it in your account. You can righ
 ## Last execution report
 
 ```
-W1023 06:13:24.440557    7827 util.go:96] 
+W1023 06:22:25.484709    7444 util.go:96] 
 Unable to detect running programs for component "etcd"
 The following "etcd node" programs have been searched, but none of them have been found:
 	- etcd
