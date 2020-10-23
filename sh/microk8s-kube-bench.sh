@@ -8,15 +8,12 @@ catch() {
   fi
 }
 
-source "$(dirname $0)/microk8s-lib.sh"
-
 if [[ -z ${MK8S_INSTALL+x} ]]       ; then export MK8S_INSTALL='false'      ; fi                        ; echo "mk8s install: $MK8S_INSTALL"
 if [[ -z ${MK8S_VERSION+x} ]]       ; then export MK8S_VERSION='1.19'       ; fi                        ; echo "mk8s version: $MK8S_VERSION"
 if [[ -z ${MK8S_KUBE_DIR+x} ]]      ; then export MK8S_KUBE_DIR='/.kube'    ; fi                        ; echo "mk8s kube dir: $MK8S_KUBE_DIR"
 
 if [[ -z ${KUBE_BENCH_DEPLOY+x} ]]  ; then export KUBE_BENCH_DEPLOY='true'  ; fi                        ; echo "kube-bench deploy: $KUBE_BENCH_DEPLOY"
 
-KUBE_CONFIG="kube-config"
 
 if [[ "$MK8S_INSTALL" == 'true' ]]
 then
@@ -26,7 +23,7 @@ then
   echo -e "\n### installing microk8s & add-ons: "
   snap install microk8s --classic --channel="$MK8S_VERSION"
   snap list 
-  #snap info microk8s
+  snap info microk8s
   microk8s status --wait-ready
 
   microk8s kubectl get nodes
@@ -39,9 +36,6 @@ fi
 microk8s status | grep 'microk8s is running'
 
 microk8s config view
-
-microk8s config > "$KUBE_CONFIG"
-
 
 if [[ "$KUBE_BENCH_DEPLOY" == 'true' ]]
 then
@@ -67,8 +61,8 @@ then
   echo "kube-bench pod: $POD"
   microk8s kubectl logs "$POD"
   
-  cat README.md > REPORT.md
-  echo '```' >> REPORT.md
-  microk8s kubectl logs "$POD" >> REPORT.md
-  echo '```' >> REPORT.md
+  cat README.template.md > README.md
+  echo '```' >> README.md
+  microk8s kubectl logs "$POD" >> README.md
+  echo '```' >> README.md
 fi
