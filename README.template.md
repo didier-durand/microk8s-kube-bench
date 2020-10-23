@@ -40,6 +40,9 @@ Tests are configured with YAML files, making this tool easy to update as test sp
 The numbered items (like 1.2.3) found in execution report below correspond to the various points being defined and commented with this same number 
 in the [official documentation](https://www.cisecurity.org/benchmark/kubernetes/) of the benchmark.
 
+Basically, the analyis is executed via a [Yaml manifest](https://github.com/aquasecurity/kube-bench/blob/master/job.yaml) defining a [Kubernetes Job](https://kubernetes.io/docs/concepts/workloads/controllers/job/) deployed on the cluster. This job triggers the execution of
+[aquasec/kube-bench:latest](https://hub.docker.com/r/aquasec/kube-bench) container image pulled from Docker Hub.
+
 [This article](https://medium.com/better-programming/how-to-harden-your-kubernetes-cluster-with-kube-bench-fae71eb24d8) delivers deep and interesting 
 insights on the benchmark.
 
