@@ -40,6 +40,9 @@ Tests are configured with YAML files, making this tool easy to update as test sp
 The numbered items (like 1.2.3) found in execution report below correspond to the various points being defined and commented with this same number 
 in the [official documentation](https://www.cisecurity.org/benchmark/kubernetes/) of the benchmark.
 
+Basically, the analyis is executed via a [Yaml manifest](https://github.com/aquasecurity/kube-bench/blob/master/job.yaml) defining a [Kubernetes Job](https://kubernetes.io/docs/concepts/workloads/controllers/job/) deployed on the cluster. This job triggers the execution of
+[aquasec/kube-bench:latest](https://hub.docker.com/r/aquasec/kube-bench) container image pulled from Docker Hub.
+
 [This article](https://medium.com/better-programming/how-to-harden-your-kubernetes-cluster-with-kube-bench-fae71eb24d8) delivers deep and interesting 
 insights on the benchmark.
 
@@ -53,11 +56,11 @@ If you want to reuse this repository, just fork it in your account. You can righ
 ## Last execution report
 
 ```
-execution date: Fri Oct 23 06:49:01 UTC 2020
+execution date: Fri Oct 23 07:52:20 UTC 2020
  
 microk8s snap version: microk8s    v1.19.2    1769   1.19/stable    canonical*             classic
  
-W1023 06:48:57.594355    7455 util.go:96] 
+W1023 07:52:17.499889    7799 util.go:96] 
 Unable to detect running programs for component "etcd"
 The following "etcd node" programs have been searched, but none of them have been found:
 	- etcd
