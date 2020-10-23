@@ -64,7 +64,9 @@ then
   cat README.template.md > README.md
   echo '```' >> README.md
   echo "execution date: $(date --utc)" >> README.md
+  echo " " >> README.md
   echo "microk8s snap version: $(snap list | grep 'microk8s')" >> README.md
+  echo " " >> README.md
   microk8s kubectl logs "$POD" >> README.md
   echo '```' >> README.md
 fi
