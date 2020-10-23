@@ -21,17 +21,21 @@ Canonical additionally provides various preconfigured [standard K8s add-ons](htt
  
 ## Kube-bench
 
-[kube-bench](https://github.com/aquasecurity/kube-bench) by [Aqua Security](https://www.aquasec.com/) is a Go application that analyses how securely Kubernetes is deployed securely by running the checks documented in the [CIS Kubernetes Benchmark](https://www.cisecurity.org/benchmark/kubernetes/).Tests are configured with YAML files, making this tool easy to update as test specifications evolve.
+[kube-bench](https://github.com/aquasecurity/kube-bench) by [Aqua Security](https://www.aquasec.com/) is a Go application that analyses how securely 
+Kubernetes is deployed securely by running the checks documented in the [CIS Kubernetes Benchmark](https://www.cisecurity.org/benchmark/kubernetes/).
+Tests are configured with YAML files, making this tool easy to update as test specifications evolve.
 
-The numbered items (like 1.2.3) found in execution report below correspond to the various points being defined and commented with this same number in the [official documentation](https://www.cisecurity.org/benchmark/kubernetes/) of the benchmark.
+The numbered items (like 1.2.3) found in execution report below correspond to the various points being defined and commented with this same number 
+in the [official documentation](https://www.cisecurity.org/benchmark/kubernetes/) of the benchmark.
 
-[This article](https://medium.com/better-programming/how-to-harden-your-kubernetes-cluster-with-kube-bench-fae71eb24d8) delivers deep and interesting insights on the benchmark.
+[This article](https://medium.com/better-programming/how-to-harden-your-kubernetes-cluster-with-kube-bench-fae71eb24d8) delivers deep and interesting 
+insights on the benchmark.
 
 ## Fork and setup
 
-If you want to reuse this repository, just fork it in your account. You can right away run this workflow by using the button defined in the workflow yaml via *'workflow_dispatch' 
+If you want to reuse this repository, just fork it in your account. You can right away run this workflow by using the button defined in the workflow yaml via *'workflow_dispatch' directive.
 
-
+<img src="img/microk8s-kube-bench.workflow-button.jpg" height="200">
 
 ## Last execution report
 
