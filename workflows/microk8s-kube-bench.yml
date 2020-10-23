@@ -1,0 +1,45 @@
+name: MicroK8s Kube-bench
+
+on:  
+
+  push:
+  
+  workflow_dispatch:
+    inputs:
+      workflowAction:
+        description: 'Action'
+        default: 'Run MicroK8s + kube-becnh'
+        required: true
+ 
+jobs:
+  microk8s-kube-bench:
+  
+    runs-on: ubuntu-20.04
+
+    steps:
+      
+    - name: Check environment
+      run: |-
+        lsb_release -a
+        
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: install MicroK8s + kube-bench
+      env: 
+        G_MK8S_INSTALL: true
+        G_KUBE_BENCH_DEPLOY: true
+      run: |-
+        sudo -- bash -c "export MK8S_INSTALL=$G_MK8S_INSTALL \
+                         && export KUBE_BENCH_DEPLOY=$G_KUBE_BENCH_DEPLOY \
+                         && sh/microk8s-kube-bench.sh"
+                         
+    - name: commit back changed files
+      run: | 
+        git add -A
+        git config --local user.name "Github Action from $GITHUB_ACTOR"
+        git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+        git diff --quiet && git diff --staged --quiet || git commit -m "changes committed back by actor $GITHUB_ACTOR on $HELMALYZER_TIMESTAMP (workflow: $GITHUB_WORKFLOW - job: $GITHUB_JOB - sha: $GITHUB_SHA - ref: $GITHUB_REF)"
+        git config pull.rebase false
+        git diff --quiet && git diff --staged --quiet || git pull
+        git push https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/didier-durand/metak8s-PRIVATE 
