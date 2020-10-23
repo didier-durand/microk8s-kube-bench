@@ -1,6 +1,6 @@
 <img src="img/microk8s-logo.png" height="100">   <img src="img/kubernetes-logo.png" height="100">    <img src="img/kube-bench-logo.png" height="105">
 
-# MicroK8s & Kubernetes security benchmark from Center for Internet Security (CIS)
+# MicroK8s & Kubernetes security benchmark from CIS
 
 ## Goal & Deliverables
 
