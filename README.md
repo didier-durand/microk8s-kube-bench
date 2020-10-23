@@ -1,6 +1,8 @@
 <img src="img/microk8s-logo.png" height="100">   <img src="img/kubernetes-logo.png" height="100">    <img src="img/kube-bench-logo.png" height="105">
 
-# Goal & Deliverables
+# MicroK8s & Kubernetes security benchmark from Center for Internet Security (CIS)
+
+## Goal & Deliverables
 
 ![workflow badge](https://github.com/didier-durand/microk8s-kube-bench/workflows/MicroK8s%20Kube-bench/badge.svg)
 
@@ -21,8 +23,13 @@ Canonical additionally provides various preconfigured [standard K8s add-ons](htt
  
 ## Kube-bench
 
+As [per Wikipedia](https://en.wikipedia.org/wiki/Center_for_Internet_Security): *"The Center for Internet Security (CIS) is a 501(c)(3) nonprofit 
+organization, formed in October, 2000. Its mission is to "identify, develop, validate, promote, and sustain best practice 
+solutions for cyber defense and build and lead communities to enable an environment of trust in cyberspace".The organization is headquartered in 
+East Greenbush, New York, with members including large corporations, government agencies, and academic institutions."*
+
 [kube-bench](https://github.com/aquasecurity/kube-bench) by [Aqua Security](https://www.aquasec.com/) is a Go application that analyses how securely 
-Kubernetes is deployed securely by running the checks documented in the [CIS Kubernetes Benchmark](https://www.cisecurity.org/benchmark/kubernetes/).
+Kubernetes is deployed by running the checks documented in the [CIS Kubernetes Benchmark](https://www.cisecurity.org/benchmark/kubernetes/).
 Tests are configured with YAML files, making this tool easy to update as test specifications evolve.
 
 The numbered items (like 1.2.3) found in execution report below correspond to the various points being defined and commented with this same number 
