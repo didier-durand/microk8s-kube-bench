@@ -4,7 +4,7 @@
 
 ## Goal & Deliverables
 
-![workflow badge](https://github.com/didier-durand/microk8s-kube-bench/workflows/MicroK8s%20Kube-bench/badge.svg)
+![workflow badge](https://github.com/didier-durand/microk8s-kube-bench/workflows/MicroK8s%20kube-bench/badge.svg)
 
 MicroK8s analysed for CIS benchmark with kube-bench. 
 
