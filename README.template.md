@@ -10,7 +10,8 @@ MicroK8s analysed for CIS benchmark with kube-bench.
 
 This repository implements a 100% automated workflow (via [microk8s-kube-bench.yml](.github/workflows/microk8s-kube-bench.yml) + [microk8s-kube-bench.sh](sh/microk8s-kube-bench.sh)) providing the installation of Microk8s on Ubuntu (run as a Github CI /CD worker). Kube-bench is then deployed and executed to obtain the analysis of the configuration of this Kubernetes cluster.
 
-Last execution report on Github CI/CD is appended below. (this workflow is scheduled for daily execution via cron directive in[microk8s-kube-bench.yml](.github/workflows/microk8s-kube-bench.yml))
+Last execution report on Github CI/CD is appended below. This workflow is scheduled for daily execution via cron directive in 
+[microk8s-kube-bench.yml](.github/workflows/microk8s-kube-bench.yml)) : it can then check new snaps (see below) of MicroK8s as they get published. 
 
 All suggestions for improvements or extensions are welcome. Same for pull requests!
 
