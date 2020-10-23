@@ -10,7 +10,8 @@ MicroK8s analysed for CIS benchmark with kube-bench.
 
 This repository implements a 100% automated workflow (via [microk8s-kube-bench.yml](.github/workflows/microk8s-kube-bench.yml) + [microk8s-kube-bench.sh](sh/microk8s-kube-bench.sh)) providing the installation of Microk8s on Ubuntu (run as a Github CI /CD worker). Kube-bench is then deployed and executed to obtain the analysis of the configuration of this Kubernetes cluster.
 
-Last execution report on Github CI/CD is appended below.
+Last execution report on Github CI/CD is appended below. This workflow is scheduled for daily execution via cron directive in 
+[microk8s-kube-bench.yml](.github/workflows/microk8s-kube-bench.yml)) : it can then check new snaps (see below) of MicroK8s as they get published. 
 
 All suggestions for improvements or extensions are welcome. Same for pull requests!
 
@@ -56,11 +57,11 @@ If you want to reuse this repository, just fork it in your account. You can righ
 ## Last execution report
 
 ```
-execution date: Fri Oct 23 07:52:20 UTC 2020
+execution date: Fri Oct 23 08:03:26 UTC 2020
  
 microk8s snap version: microk8s    v1.19.2    1769   1.19/stable    canonical*             classic
  
-W1023 07:52:17.499889    7799 util.go:96] 
+W1023 08:03:23.620481    7501 util.go:96] 
 Unable to detect running programs for component "etcd"
 The following "etcd node" programs have been searched, but none of them have been found:
 	- etcd
