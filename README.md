@@ -40,9 +40,10 @@ insights on the benchmark.
 
 ## Fork and setup
 
-If you want to reuse this repository, just fork it in your account. You can right away run this workflow by using the button defined in the workflow yaml via *'workflow_dispatch' directive.
+If you want to reuse this repository, just fork it in your account. You can right away run this workflow by using the button defined in the [workflow 
+yaml](.github/workflows/microk8s-kube-bench.yml) via *'workflow_dispatch'* directive.
 
-<img src="img/microk8s-kube-bench.workflow-button.jpg" height="200">
+<img src="img/microk8s-kube-bench-workflow-button.jpg" height="200">
 
 ## Last execution report
 
