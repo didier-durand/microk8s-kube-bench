@@ -57,11 +57,11 @@ If you want to reuse this repository, just fork it in your account. You can righ
 ## Last execution report
 
 ```
-execution date: Sat Dec 19 02:00:18 UTC 2020
+execution date: Sun Dec 20 02:00:05 UTC 2020
  
 microk8s snap version: microk8s  v1.19.5   1856   1.19/stable    canonical*  classic
  
-W1219 02:00:12.617983    7459 util.go:96] 
+W1220 01:59:59.157038    7431 util.go:96] 
 Unable to detect running programs for component "etcd"
 The following "etcd node" programs have been searched, but none of them have been found:
 	- etcd
