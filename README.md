@@ -57,17 +57,10 @@ If you want to reuse this repository, just fork it in your account. You can righ
 ## Last execution report
 
 ```
-execution date: Wed Jan 20 02:53:09 UTC 2021
+execution date: Thu Jan 21 02:53:37 UTC 2021
  
 microk8s snap version: microk8s  v1.19.5    1856   1.19/stable    canonical*  classic
  
-W0120 02:53:05.642711    7834 util.go:96] 
-Unable to detect running programs for component "etcd"
-The following "etcd node" programs have been searched, but none of them have been found:
-	- etcd
-
-
-These program names are provided in the config.yaml, section 'etcd.etcd.bins'
 [INFO] 1 Master Node Security Configuration
 [INFO] 1.1 Master Node Configuration Files
 [FAIL] 1.1.1 Ensure that the API server pod specification file permissions are set to 644 or more restrictive (Automated)
@@ -133,13 +126,13 @@ These program names are provided in the config.yaml, section 'etcd.etcd.bins'
 [PASS] 1.3.3 Ensure that the --use-service-account-credentials argument is set to true (Automated)
 [PASS] 1.3.4 Ensure that the --service-account-private-key-file argument is set as appropriate (Automated)
 [PASS] 1.3.5 Ensure that the --root-ca-file argument is set as appropriate (Automated)
-[FAIL] 1.3.6 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated)
+[PASS] 1.3.6 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated)
 [PASS] 1.3.7 Ensure that the --bind-address argument is set to 127.0.0.1 (Automated)
 [INFO] 1.4 Scheduler
 [FAIL] 1.4.1 Ensure that the --profiling argument is set to false (Automated)
 [PASS] 1.4.2 Ensure that the --bind-address argument is set to 127.0.0.1 (Automated)
 
-== Remediations ==
+== Remediations master ==
 1.1.1 Run the below command (based on the file location on your system) on the
 master node.
 For example, chmod 644 /etc/kubernetes/manifests/kube-apiserver.yaml
@@ -336,20 +329,17 @@ for example:
 on the master node and set the below parameter.
 --profiling=false
 
-1.3.6 Edit the Controller Manager pod specification file /etc/kubernetes/manifests/kube-controller-manager.yaml
-on the master node and set the --feature-gates parameter to include RotateKubeletServerCertificate=true.
---feature-gates=RotateKubeletServerCertificate=true
-
 1.4.1 Edit the Scheduler pod specification file /etc/kubernetes/manifests/kube-scheduler.yaml file
 on the master node and set the below parameter.
 --profiling=false
 
 
-== Summary ==
-19 checks PASS
-34 checks FAIL
+== Summary master ==
+20 checks PASS
+33 checks FAIL
 12 checks WARN
 0 checks INFO
+
 [INFO] 3 Control Plane Configuration
 [INFO] 3.1 Authentication and Authorization
 [WARN] 3.1.1 Client certificate authentication should not be used for users (Manual)
@@ -357,7 +347,7 @@ on the master node and set the below parameter.
 [WARN] 3.2.1 Ensure that a minimal audit policy is created (Manual)
 [WARN] 3.2.2 Ensure that the audit policy covers key security concerns (Manual)
 
-== Remediations ==
+== Remediations controlplane ==
 3.1.1 Alternative mechanisms provided by Kubernetes such as the use of OIDC should be
 implemented in place of client certificates.
 
@@ -367,17 +357,18 @@ implemented in place of client certificates.
 minimum.
 
 
-== Summary ==
+== Summary controlplane ==
 0 checks PASS
 0 checks FAIL
 3 checks WARN
 0 checks INFO
+
 [INFO] 4 Worker Node Security Configuration
 [INFO] 4.1 Worker Node Configuration Files
 [PASS] 4.1.1 Ensure that the kubelet service file permissions are set to 644 or more restrictive (Automated)
 [PASS] 4.1.2 Ensure that the kubelet service file ownership is set to root:root (Automated)
-[WARN] 4.1.3 If proxy kubeconfig file exists ensure permissions are set to 644 or more restrictive (Manual)
-[WARN] 4.1.4 Ensure that the proxy kubeconfig file ownership is set to root:root (Manual)
+[PASS] 4.1.3 If proxy kubeconfig file exists ensure permissions are set to 644 or more restrictive (Manual)
+[PASS] 4.1.4 Ensure that the proxy kubeconfig file ownership is set to root:root (Manual)
 [FAIL] 4.1.5 Ensure that the --kubeconfig kubelet.conf file permissions are set to 644 or more restrictive (Automated)
 [WARN] 4.1.6 Ensure that the --kubeconfig kubelet.conf file ownership is set to root:root (Manual)
 [WARN] 4.1.7 Ensure that the certificate authorities file permissions are set to 644 or more restrictive (Manual)
@@ -396,17 +387,10 @@ minimum.
 [WARN] 4.2.9 Ensure that the --event-qps argument is set to 0 or a level which ensures appropriate event capture (Manual)
 [WARN] 4.2.10 Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate (Manual)
 [PASS] 4.2.11 Ensure that the --rotate-certificates argument is not set to false (Manual)
-[WARN] 4.2.12 Verify that the RotateKubeletServerCertificate argument is set to true (Manual)
+[PASS] 4.2.12 Verify that the RotateKubeletServerCertificate argument is set to true (Manual)
 [WARN] 4.2.13 Ensure that the Kubelet only makes use of Strong Cryptographic Ciphers (Manual)
 
-== Remediations ==
-4.1.3 Run the below command (based on the file location on your system) on the each worker node.
-For example,
-chmod 644 /etc/kubernetes/proxy.conf
-
-4.1.4 Run the below command (based on the file location on your system) on the each worker node.
-For example, chown root:root /etc/kubernetes/proxy.conf
-
+== Remediations node ==
 4.1.5 Run the below command (based on the file location on your system) on the each worker node.
 For example,
 chmod 644 /etc/kubernetes/kubelet.conf
@@ -459,13 +443,6 @@ Based on your system, restart the kubelet service. For example:
 systemctl daemon-reload
 systemctl restart kubelet.service
 
-4.2.12 Edit the kubelet service file /etc/systemd/system/snap.microk8s.daemon-kubelet.service
-on each worker node and set the below parameter in KUBELET_CERTIFICATE_ARGS variable.
---feature-gates=RotateKubeletServerCertificate=true
-Based on your system, restart the kubelet service. For example:
-systemctl daemon-reload
-systemctl restart kubelet.service
-
 4.2.13 If using a Kubelet config file, edit the file to set TLSCipherSuites: to
 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
 or to a subset of these values.
@@ -478,11 +455,12 @@ systemctl daemon-reload
 systemctl restart kubelet.service
 
 
-== Summary ==
-11 checks PASS
+== Summary node ==
+14 checks PASS
 3 checks FAIL
-9 checks WARN
+6 checks WARN
 0 checks INFO
+
 [INFO] 5 Kubernetes Policies
 [INFO] 5.1 RBAC and Service Accounts
 [WARN] 5.1.1 Ensure that the cluster-admin role is only used where required (Manual)
@@ -515,7 +493,7 @@ systemctl restart kubelet.service
 [WARN] 5.7.3 Apply Security Context to Your Pods and Containers (Manual)
 [WARN] 5.7.4 The default namespace should not be used (Manual)
 
-== Remediations ==
+== Remediations policies ==
 5.1.1 Identify all clusterrolebindings to the cluster-admin role. Check if they are used and
 if they need this role or if they could use a role with fewer privileges.
 Where possible, first bind users to a lower privileged role and then remove the
@@ -612,9 +590,16 @@ Containers.
 resources and that all new resources are created in a specific namespace.
 
 
-== Summary ==
+== Summary policies ==
 0 checks PASS
 0 checks FAIL
 24 checks WARN
 0 checks INFO
+
+== Summary total ==
+34 checks PASS
+36 checks FAIL
+45 checks WARN
+0 checks INFO
+
 ```
