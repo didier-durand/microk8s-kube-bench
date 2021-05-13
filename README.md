@@ -57,10 +57,44 @@ If you want to reuse this repository, just fork it in your account. You can righ
 ## Last execution report
 
 ```
-execution date: Wed May 12 02:18:28 UTC 2021
+execution date: Thu May 13 02:24:19 UTC 2021
  
-microk8s snap version: microk8s  v1.19.10   2158   1.19/stable    canonical*  classic
+microk8s snap version: microk8s  v1.19.10  2158   1.19/stable    canonical*  classic
  
+W0513 02:24:04.766466    6372 util.go:306] 
+Unable to find the programs kubectl or kubelet in the PATH.
+These programs are used to determine which version of Kubernetes is running.
+Make sure the /usr/local/mount-from-host/bin directory is mapped to the container,
+either in the job.yaml file, or Docker command.
+
+For job.yaml:
+...
+- name: usr-bin
+  mountPath: /usr/local/mount-from-host/bin
+...
+
+For docker command:
+   docker -v $(which kubectl):/usr/local/mount-from-host/bin/kubectl ....
+
+Alternatively, you can specify the version with --version
+   kube-bench --version <VERSION> ...
+W0513 02:24:16.158464    6372 util.go:306] 
+Unable to find the programs kubectl or kubelet in the PATH.
+These programs are used to determine which version of Kubernetes is running.
+Make sure the /usr/local/mount-from-host/bin directory is mapped to the container,
+either in the job.yaml file, or Docker command.
+
+For job.yaml:
+...
+- name: usr-bin
+  mountPath: /usr/local/mount-from-host/bin
+...
+
+For docker command:
+   docker -v $(which kubectl):/usr/local/mount-from-host/bin/kubectl ....
+
+Alternatively, you can specify the version with --version
+   kube-bench --version <VERSION> ...
 [INFO] 1 Master Node Security Configuration
 [INFO] 1.1 Master Node Configuration Files
 [FAIL] 1.1.1 Ensure that the API server pod specification file permissions are set to 644 or more restrictive (Automated)
