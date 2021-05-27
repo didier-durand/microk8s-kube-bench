@@ -57,11 +57,11 @@ If you want to reuse this repository, just fork it in your account. You can righ
 ## Last execution report
 
 ```
-execution date: Wed May 26 02:59:32 UTC 2021
+execution date: Thu May 27 03:18:11 UTC 2021
  
 microk8s snap version: microk8s  v1.19.10  2158   1.19/stable    canonical*  classic
  
-W0526 02:59:17.703583    6210 util.go:306] 
+W0527 03:17:57.169220    6197 util.go:306] 
 Unable to find the programs kubectl or kubelet in the PATH.
 These programs are used to determine which version of Kubernetes is running.
 Make sure the /usr/local/mount-from-host/bin directory is mapped to the container,
@@ -78,7 +78,7 @@ For docker command:
 
 Alternatively, you can specify the version with --version
    kube-bench --version <VERSION> ...
-W0526 02:59:29.028648    6210 util.go:306] 
+W0527 03:18:08.365418    6197 util.go:306] 
 Unable to find the programs kubectl or kubelet in the PATH.
 These programs are used to determine which version of Kubernetes is running.
 Make sure the /usr/local/mount-from-host/bin directory is mapped to the container,
@@ -144,7 +144,7 @@ Alternatively, you can specify the version with --version
 [FAIL] 1.2.23 Ensure that the --audit-log-maxage argument is set to 30 or as appropriate (Automated)
 [FAIL] 1.2.24 Ensure that the --audit-log-maxbackup argument is set to 10 or as appropriate (Automated)
 [FAIL] 1.2.25 Ensure that the --audit-log-maxsize argument is set to 100 or as appropriate (Automated)
-[PASS] 1.2.26 Ensure that the --request-timeout argument is set as appropriate (Automated)
+[WARN] 1.2.26 Ensure that the --request-timeout argument is set as appropriate (Automated)
 [PASS] 1.2.27 Ensure that the --service-account-lookup argument is set to true (Automated)
 [PASS] 1.2.28 Ensure that the --service-account-key-file argument is set as appropriate (Automated)
 [FAIL] 1.2.29 Ensure that the --etcd-certfile and --etcd-keyfile arguments are set as appropriate (Automated)
@@ -329,6 +329,11 @@ on the master node and set the --audit-log-maxsize parameter to an appropriate s
 For example, to set it as 100 MB:
 --audit-log-maxsize=100
 
+1.2.26 Edit the API server pod specification file /etc/kubernetes/manifests/kube-apiserver.yaml
+and set the below parameter as appropriate and if needed.
+For example,
+--request-timeout=300s
+
 1.2.29 Follow the Kubernetes documentation and set up the TLS connection between the apiserver and etcd.
 Then, edit the API server pod specification file /etc/kubernetes/manifests/kube-apiserver.yaml
 on the master node and set the etcd certificate and key file parameters.
@@ -369,9 +374,9 @@ on the master node and set the below parameter.
 
 
 == Summary master ==
-20 checks PASS
+19 checks PASS
 33 checks FAIL
-12 checks WARN
+13 checks WARN
 0 checks INFO
 
 [INFO] 3 Control Plane Configuration
@@ -631,9 +636,9 @@ resources and that all new resources are created in a specific namespace.
 0 checks INFO
 
 == Summary total ==
-34 checks PASS
+33 checks PASS
 36 checks FAIL
-45 checks WARN
+46 checks WARN
 0 checks INFO
 
 ```
