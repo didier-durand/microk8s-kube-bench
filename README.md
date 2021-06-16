@@ -57,11 +57,11 @@ If you want to reuse this repository, just fork it in your account. You can righ
 ## Last execution report
 
 ```
-execution date: Tue Jun 15 02:16:18 UTC 2021
+execution date: Wed Jun 16 02:11:52 UTC 2021
  
 microk8s snap version: microk8s  v1.19.10  2158   1.19/stable    canonical*  classic
  
-W0615 02:16:04.738860    6437 util.go:306] 
+W0616 02:11:38.822361    6909 util.go:306] 
 Unable to find the programs kubectl or kubelet in the PATH.
 These programs are used to determine which version of Kubernetes is running.
 Make sure the /usr/local/mount-from-host/bin directory is mapped to the container,
@@ -78,7 +78,7 @@ For docker command:
 
 Alternatively, you can specify the version with --version
    kube-bench --version <VERSION> ...
-W0615 02:16:16.031445    6437 util.go:306] 
+W0616 02:11:50.229417    6909 util.go:306] 
 Unable to find the programs kubectl or kubelet in the PATH.
 These programs are used to determine which version of Kubernetes is running.
 Make sure the /usr/local/mount-from-host/bin directory is mapped to the container,
